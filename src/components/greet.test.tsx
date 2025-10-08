@@ -14,6 +14,9 @@ describe("Greet", () => {
     test("render correctly", () => {
         render(<Greet />);
         const textElement = screen.getByText("Hello"); // expect the text element to be in the document
+        /*
+        expect(value)+ matcher(expected corrected value - optional -) function that assert something about the value 
+        */
         expect(textElement).toBeInTheDocument();
     });
     
