@@ -132,6 +132,14 @@ these methods need to be combined with other suffix
 ## Query Priority (Recommended Order)
 
 1. **getByRole** - Most accessible, user-focused
+button ------> button role
+a ------> link role 
+h1 / h6 ------> heading role 
+checkbox ------> checkbox role 
+radio buttons ------> radio role 
+element with no default roles ==> add role="" attribute
+ex: <a role="button"></a>
+
 2. **getByLabelText** - For form controls
 3. **getByPlaceholderText** - For form inputs
 4. **getByText** - For text content
@@ -139,3 +147,10 @@ these methods need to be combined with other suffix
 6. **getByAltText** - For images
 7. **getByTitle** - For elements with title
 8. **getByTestId** - Last resort, avoid if possible
+
+
+
+
+
+
+
