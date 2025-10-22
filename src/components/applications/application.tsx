@@ -13,7 +13,7 @@ export const Application = () => {
 
         <div>
           <label htmlFor="bio">Bio</label>
-          <textarea name="bio" id="bio" />
+          <textarea name="bio" id="bio" placeholder="Fullname" />
         </div>
 
         <div>
