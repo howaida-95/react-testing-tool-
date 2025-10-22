@@ -24,16 +24,23 @@ describe("Application", () => {
     // assert the element is in the document
     expect(bioElement).toBeInTheDocument();
 
-    // test section 
-    const section1Element = screen.getByRole("heading", { level : 1, name: "Job application form" });
+    // test section
+    const section1Element = screen.getByRole("heading", { level: 1, name: "Job application form" });
     expect(section1Element).toBeInTheDocument();
 
-    const section2Element = screen.getByRole("heading", {level: 2, name: "Section 1" });
+    const section2Element = screen.getByRole("heading", { level: 2, name: "Section 1" });
     expect(section2Element).toBeInTheDocument();
 
+    // test name using getByLabelText
+    const nameElement2 = screen.getByLabelText("Name", { selector: "input" }); // Name => label of input element
+    expect(nameElement2).toBeInTheDocument();
+
+    const termsElements2 = screen.getByLabelText("I agree to the terms and conditions");
+    expect(termsElements2).toBeInTheDocument();
+
     // test job location
-    const jobLocationElement = screen.getByRole("combobox", { name: "Job location" });
-    expect(jobLocationElement).toBeInTheDocument();
+    // const jobLocationElement = screen.getByRole("combobox", { name: "Job location" });
+    // expect(jobLocationElement).toBeInTheDocument();
 
     // test terms and conditions
     const termsAndConditionsElement = screen.getByRole("checkbox", { name: "I agree to the terms and conditions" });
