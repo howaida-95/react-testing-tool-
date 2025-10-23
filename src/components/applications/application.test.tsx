@@ -41,6 +41,9 @@ describe("Application", () => {
     const termsElements2 = screen.getByLabelText("I agree to the terms and conditions");
     expect(termsElements2).toBeInTheDocument();
 
+    const paragraphElement = screen.getByText("all fields are mandatory");
+    expect(paragraphElement).toBeInTheDocument();
+
     // test job location
     // const jobLocationElement = screen.getByRole("combobox", { name: "Job location" });
     // expect(jobLocationElement).toBeInTheDocument();
