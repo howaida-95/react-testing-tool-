@@ -38,6 +38,9 @@ describe("Application", () => {
     const nameElement3 = screen.getByPlaceholderText("Fullname");
     expect(nameElement3).toBeInTheDocument();
 
+    const nameElement4 = screen.getByDisplayValue("Howaida");
+    expect(nameElement4).toBeInTheDocument();
+
     const termsElements2 = screen.getByLabelText("I agree to the terms and conditions");
     expect(termsElements2).toBeInTheDocument();
 

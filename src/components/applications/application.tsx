@@ -1,20 +1,24 @@
-import React from "react";
-
 export const Application = () => {
   return (
     <>
       <h1>Job application form</h1>
       <h2>Section 1</h2>
-      <p> all fields are mandatory</p>
+      <p> all fields are mandatory </p>
       <form>
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
+          <input 
+            type="text" 
+            id="name" 
+            placeholder="Fullname" 
+            value="Howaida" 
+            onChange={() => {}} 
+          />
         </div>
 
         <div>
           <label htmlFor="bio">Bio</label>
-          <textarea name="bio" id="bio" placeholder="Fullname" />
+          <textarea name="bio" id="bio" />
         </div>
 
         <div>
