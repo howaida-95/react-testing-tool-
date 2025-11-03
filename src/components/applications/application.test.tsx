@@ -41,11 +41,21 @@ describe("Application", () => {
     const nameElement4 = screen.getByDisplayValue("Howaida");
     expect(nameElement4).toBeInTheDocument();
 
+    const imageElement = screen.getByAltText("a person with a laptop");
+    expect(imageElement).toBeInTheDocument();
+
+    const closeElement = screen.getByTitle("close");
+    expect(closeElement).toBeInTheDocument();
+
     const termsElements2 = screen.getByLabelText("I agree to the terms and conditions");
     expect(termsElements2).toBeInTheDocument();
 
     const paragraphElement = screen.getByText("all fields are mandatory");
     expect(paragraphElement).toBeInTheDocument();
+
+    const customElement = screen.getByTestId("custom-element");
+    expect(customElement).toBeInTheDocument();
+    
 
     // test job location
     // const jobLocationElement = screen.getByRole("combobox", { name: "Job location" });

@@ -4,6 +4,9 @@ export const Application = () => {
       <h1>Job application form</h1>
       <h2>Section 1</h2>
       <p> all fields are mandatory </p>
+      <span title="close">X</span>
+      <img src="https://picsum.photos/200/300" alt="a person with a laptop" />
+      <div data-testid="custom-element">custom html element</div>
       <form>
         <div>
           <label htmlFor="name">Name</label>
