@@ -1,3 +1,4 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Skills } from "./skills";
 
@@ -19,5 +20,19 @@ describe("Skills component", () => {
     // check if each skill is rendered as a list item
     const listItems = screen.getAllByRole("listitem");
     expect(listItems).toHaveLength(skills.length);
+  });
+
+  // test to check if start learning button is not rendered in the doc initially
+  test("the button start learning is not rendered in the doc initially", () => {
+    render(<Skills skills={skills} />);
+    const startLearningButton = screen.queryByRole("button", { name: "Start learning" });
+    expect(startLearningButton).not.toBeInTheDocument();
+  });
+
+  // test to check if start learning button is not rendered in the doc initially
+  test("the button login is rendered in the doc initially", () => {
+    render(<Skills skills={skills} />);
+    const loginButton = screen.queryByRole("button", { name: "Login" });
+    expect(loginButton).toBeInTheDocument();
   });
 });
