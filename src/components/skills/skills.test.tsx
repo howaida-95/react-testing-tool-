@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, logRoles } from "@testing-library/react";
 import { Skills } from "./skills";
 
 // describe block for Skills component tests used for grouping related tests
@@ -34,5 +34,15 @@ describe("Skills component", () => {
     render(<Skills skills={skills} />);
     const loginButton = screen.queryByRole("button", { name: "Login" });
     expect(loginButton).toBeInTheDocument();
+  });
+  
+  // test to check if start learning button is rendered in the doc after 1 second
+  test("the button start learning is rendered in the doc after 1 second", async () => {
+    const view = render(<Skills skills={skills} />);
+    logRoles(view.container);
+    //screen.debug();
+    const startLearningButton = await screen.findByRole("button", { name: "Start learning" }, { timeout: 2000 });
+    //screen.debug();
+    expect(startLearningButton).toBeInTheDocument();
   });
 });
