@@ -9,6 +9,7 @@ describe("Skills component", () => {
   test("renders correctly", () => {
     // render the Skills component with sample skills
     render(<Skills skills={skills} />);
+      screen.logTestingPlaygroundURL();
     // check if the list element is present in the document
     const listElement = screen.getByRole("list");
     expect(listElement).toBeInTheDocument();
