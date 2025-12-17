@@ -36,4 +36,34 @@ describe("Counter", () => {
     const countElement = screen.getByRole("heading");
     expect(countElement).toHaveTextContent("2");
   });
+
+  test("renders a count of 10 after clicking the set button", async () => {
+    render(<Counter />);
+    const amountInput = screen.getByRole("spinbutton", { name: "amount" });
+    // user setup (type the amount into the input field)
+    await userEvent.type(amountInput, "10");
+    const setButton = screen.getByRole("button", { name: "set" });
+    // user setup (click the set button)
+    await userEvent.click(setButton);
+    const countElement = screen.getByRole("heading");
+    expect(countElement).toHaveTextContent("10");
+  });
+
+  // test if the focus order is correct
+  test("focus order is correct", async () => {
+    render(<Counter />);
+    const incrementButton = screen.getByRole("button", { name: "Increment" });
+    const amountInput = screen.getByRole("spinbutton", { name: "amount" });
+    const setButton = screen.getByRole("button", { name: "set" });
+    // focus on the body to avoid the focus order issue
+    document.body.focus();
+
+    const user = userEvent.setup();
+    await user.tab();
+    expect(incrementButton).toHaveFocus();
+    await user.tab();
+    expect(amountInput).toHaveFocus();
+    await user.tab();
+    expect(setButton).toHaveFocus();
+  });
 });
