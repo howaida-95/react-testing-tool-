@@ -13,9 +13,7 @@ export const Users = () => {
         }
         return response.json();
       })
-      .then((data) =>
-        setUsers(data.map((user: { name: string }) => user.name))
-      )
+      .then((data) => setUsers(data.map((user: { name: string }) => user.name)))
       .catch(() => {
         // network error or thrown server error --> request sent, and there's no response
         setError("error fetching users");

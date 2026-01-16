@@ -23,7 +23,7 @@ describe("Users", () => {
     expect(users).toHaveLength(3);
   });
 
-  // assert error message is displayed in the dom when the api call fails 
+  // assert error message is displayed in the dom when the api call fails
   test("renders error message when the api call fails", async () => {
     /*
       reset the handler we have in the handlers.ts file
@@ -38,11 +38,10 @@ describe("Users", () => {
     server.use(
       http.get("https://jsonplaceholder.typicode.com/users", () => {
         return HttpResponse.json([], { status: 500 });
-      })
+      }),
     );
     render(<Users />);
     const errorMessage = await screen.findByText("error fetching users");
     expect(errorMessage).toBeInTheDocument();
   });
-
 });

@@ -1,5 +1,5 @@
-1️⃣ Mock functions with Jest
-==============================
+# 1️⃣ Mock functions with Jest
+
 📌 What it means
 
 Mocking functions with Jest allows you to:
@@ -20,21 +20,20 @@ Component
 import { formatName } from "../utils/formatName";
 
 export const UserName = ({ name }: { name: string }) => {
-  return <span>{formatName(name)}</span>;
+return <span>{formatName(name)}</span>;
 };
 
 Test
 import { render, screen } from "@testing-library/react";
 import { UserName } from "./UserName";
-import * as utils from "../utils/formatName";
+import \* as utils from "../utils/formatName";
 
 jest.spyOn(utils, "formatName").mockReturnValue("MOCKED");
 
 test("mocks function with jest", () => {
-  render(<UserName name="john" />);
-  expect(screen.getByText("MOCKED")).toBeInTheDocument();
+render(<UserName name="john" />);
+expect(screen.getByText("MOCKED")).toBeInTheDocument();
 });
-
 
 ✅ When to use:
 
@@ -46,8 +45,8 @@ Hooks
 
 Services
 
-2️⃣ Mock HTTP requests with MSW
-================================
+# 2️⃣ Mock HTTP requests with MSW
+
 📌 What it means
 
 MSW intercepts real network requests and returns mocked responses.
@@ -58,40 +57,40 @@ MSW handler
 import { http, HttpResponse } from "msw";
 
 export const handlers = [
-  http.get("/api/users", () => {
-    return HttpResponse.json([
-      { id: 1, name: "John" },
-      { id: 2, name: "Jane" },
-    ]);
-  }),
+http.get("/api/users", () => {
+return HttpResponse.json([
+{ id: 1, name: "John" },
+{ id: 2, name: "Jane" },
+]);
+}),
 ];
 
 Component
 export const Users = () => {
-  const [users, setUsers] = React.useState<string[]>([]);
+const [users, setUsers] = React.useState<string[]>([]);
 
-  React.useEffect(() => {
-    fetch("/api/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data.map((u: any) => u.name)));
-  }, []);
+React.useEffect(() => {
+fetch("/api/users")
+.then((res) => res.json())
+.then((data) => setUsers(data.map((u: any) => u.name)));
+}, []);
 
-  return (
-    <ul>
-      {users.map((user) => (
-        <li key={user}>{user}</li>
-      ))}
-    </ul>
-  );
+return (
+
+<ul>
+{users.map((user) => (
+<li key={user}>{user}</li>
+))}
+</ul>
+);
 };
 
 Test
 test("renders users from api", async () => {
-  render(<Users />);
-  const items = await screen.findAllByRole("listitem");
-  expect(items).toHaveLength(2);
+render(<Users />);
+const items = await screen.findAllByRole("listitem");
+expect(items).toHaveLength(2);
 });
-
 
 ✅ When to use:
 
@@ -101,8 +100,8 @@ Integration tests
 
 Realistic backend behavior
 
-3️⃣ Handle error responses with MSW
-===================================
+# 3️⃣ Handle error responses with MSW
+
 📌 What it means
 
 MSW allows you to simulate:
@@ -118,36 +117,35 @@ This ensures your UI handles failures correctly.
 ✅ Example: Test error handling
 Component (important fix: response.ok)
 export const Users = () => {
-  const [error, setError] = React.useState<string | null>(null);
+const [error, setError] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
-    fetch("/api/users")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed");
-        return res.json();
-      })
-      .catch(() => setError("error fetching users"));
-  }, []);
+React.useEffect(() => {
+fetch("/api/users")
+.then((res) => {
+if (!res.ok) throw new Error("Failed");
+return res.json();
+})
+.catch(() => setError("error fetching users"));
+}, []);
 
-  if (error) return <p>{error}</p>;
-  return <p>Users loaded</p>;
+if (error) return <p>{error}</p>;
+return <p>Users loaded</p>;
 };
 
 MSW error handler
 server.use(
-  http.get("/api/users", () => {
-    return HttpResponse.json({}, { status: 500 });
-  })
+http.get("/api/users", () => {
+return HttpResponse.json({}, { status: 500 });
+})
 );
 
 Test
 test("shows error message when api fails", async () => {
-  render(<Users />);
-  expect(
-    await screen.findByText(/error fetching users/i)
-  ).toBeInTheDocument();
+render(<Users />);
+expect(
+await screen.findByText(/error fetching users/i)
+).toBeInTheDocument();
 });
-
 
 ✅ What this tests:
 

@@ -1,7 +1,11 @@
 // Polyfills for Web APIs required by MSW v2
 // Must be set before any imports
 const { TextEncoder, TextDecoder } = require("util");
-const { ReadableStream, TransformStream, WritableStream } = require("node:stream/web");
+const {
+  ReadableStream,
+  TransformStream,
+  WritableStream,
+} = require("node:stream/web");
 
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
@@ -35,7 +39,7 @@ const { server } = require("./mocks/server");
 beforeAll(() =>
   server.listen({
     onUnhandledRequest: "warn",
-  })
+  }),
 );
 
 // Reset any request handlers that are declared during the tests

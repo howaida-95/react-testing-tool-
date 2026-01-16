@@ -17,7 +17,11 @@ export const Skills = ({ skills }: skillsProps) => {
           <li key={index}>{skill}</li>
         ))}
       </ul>
-      {isLoggedIn ? <button>Start learning</button> : <button onClick={() => setIsLoggedIn(true)}>Login</button>}
+      {isLoggedIn ? (
+        <button>Start learning</button>
+      ) : (
+        <button onClick={() => setIsLoggedIn(true)}>Login</button>
+      )}
     </>
   );
 };

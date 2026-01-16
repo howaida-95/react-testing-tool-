@@ -15,7 +15,13 @@ describe("CounterTwo", () => {
   test("handlers are called", async () => {
     const incrementHandler = jest.fn();
     const decrementHandler = jest.fn();
-    render(<CounterTwo count={0} handleIncrement={incrementHandler} handleDecrement={decrementHandler} />);
+    render(
+      <CounterTwo
+        count={0}
+        handleIncrement={incrementHandler}
+        handleDecrement={decrementHandler}
+      />,
+    );
     const incrementButton = screen.getByRole("button", { name: "Increment" });
     const decrementButton = screen.getByRole("button", { name: "Decrement" });
     expect(incrementButton).toBeInTheDocument();
