@@ -12,16 +12,5 @@ export const useCounter = (initialCount: number = 0) => {
     setCount(initialCount);
   };
 
-
-
-
-
-
-
-
-
-
-
-  
   return { count, increment, decrement, reset };
 };
